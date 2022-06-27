@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .PageNation {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  text-align: center;
+}
+
+body .PageNation > ul {
+  position: absolute;
+  top: 20%;
+  left: 14%;
+}
+
+body .PageNation > ul li {
+  display: inline-block;
+  padding: 7px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+body .PageNation > ul li.on {
+  color: red;
+  pointer-events: none;
+}
+
+body .table {
+  width: 800px;
+  text-align: center;
+}
+
+body .paging {
+  width: 20%;
+  margin-left: 150px;
+}
+
+body .page-link {
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.css.map */
