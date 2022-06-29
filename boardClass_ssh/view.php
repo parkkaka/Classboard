@@ -22,30 +22,30 @@
 
     <tr>
       <th width=200>작성자</th>
-      <td><?=$val['name']?></td>
+      <td><?php echo $val['name']?></td>
     </tr>
 
     <tr>
       <th>제목</th>
-      <td><?=$val['subject']?></td>
+      <td><?php echo $val['subject']?></td>
     </tr>
 
     <tr>
       <th>내용</th>
-      <td><?=nl2br($val['memo'])?></td>
+      <td><?php echo nl2br($val['memo'])?></td>
     </tr>
 
     <tr>
       <th>조회수</th>
-      <td><?=$val['cnt']?></td>
+      <td><?php echo $val['cnt']?></td>
     </tr>
 
 
     <tr>
       <td colspan="2">
         <div style="float:right";>
-        <a href="confirmDel.php?idx=<?=$val['idx']?>">삭제</a>
-        <a href="update.php?idx=<?=$val['idx']?>">수정</a>
+        <a href="confirmDel.php?idx=<?php echo $val['idx']?>">삭제</a>
+        <a href="update.php?idx=<?php echo $val['idx']?>">수정</a>
         </div>
         <a href="index.php">목록</a>
       </td>
