@@ -132,7 +132,7 @@
     }
     public function getEndIndex()
     {
-      return $this->currentPage * $this->cntRowPerPage;
+      return $this->currentPage * $this->cntRowPerPage; //현재선택된페이지 * 보여질개수
     }
     public function getCntRowPerPage()
     {

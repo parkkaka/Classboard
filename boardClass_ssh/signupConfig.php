@@ -18,7 +18,7 @@
       $this->name = $name;
       $this->subject = $subject;
       $this->memo = $memo;
-      $this->pwd = $pwd;
+      $this->pwd = password_hash($pwd,PASSWORD_DEFAULT);
       $this->regDate = $regDate;
       $this->ip = $ip;
       $this->cnt = $cnt;
@@ -90,9 +90,8 @@
       return $this->cnt;
     }
 
-
-
     //-----------sql 구문
+    
     // 삽입sql
     public function insertData() {
       try {

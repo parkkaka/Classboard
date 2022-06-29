@@ -22,22 +22,22 @@
 
     <tr>
       <th width=200>작성자</th>
-      <td><?php echo $val['name']?></td>
+      <td><?php echo htmlspecialchars($val['name'])?></td>
     </tr>
 
     <tr>
       <th>제목</th>
-      <td><?php echo $val['subject']?></td>
+      <td><?php echo htmlspecialchars($val['subject'])?></td>
     </tr>
 
     <tr>
       <th>내용</th>
-      <td><?php echo nl2br($val['memo'])?></td>
+      <td><?php echo htmlspecialchars(nl2br($val['memo']))?></td>
     </tr>
 
     <tr>
       <th>조회수</th>
-      <td><?php echo $val['cnt']?></td>
+      <td><?php echo htmlspecialchars($val['cnt'])?></td>
     </tr>
 
 

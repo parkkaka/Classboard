@@ -21,17 +21,17 @@
   <table width=800 border="1" cellpadding=5>
     <tr>
       <th>작성자</th>
-      <td><input type="text" name="name" value="<?php echo $val['name']?>"></td>
+      <td><input type="text" name="name" value="<?php echo htmlspecialchars($val['name'])?>"></td>
     </tr>
 
     <tr>
       <th>제목</th>
-      <td><input type="text" name="subject" style="width:100%;" value="<?php echo $val['subject']?>"></td>
+      <td><input type="text" name="subject" style="width:100%;" value="<?php echo htmlspecialchars($val['subject'])?>"></td>
     </tr>
 
     <tr>
       <th>내용</th>
-      <td><textarea name="memo" style="width:100%; height:300px"><?php echo $val['memo']?></textarea></td>
+      <td><textarea name="memo" style="width:100%; height:300px"><?php echo htmlspecialchars($val['memo'])?></textarea></td>
     </tr>
 
     <tr>

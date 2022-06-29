@@ -18,10 +18,10 @@
       $output .='
       <tr style="text-align:center;">
       <td>'.$val['idx'].'</td>
-      <td>'.$val['name'].'</td>
-      <td><a href="view.php?idx='.$val['idx'].'">'.$val['subject'].'</a></td>
-      <td>'.substr($val['regDate'],0,10).'</td>
-      <td>'.$val['cnt'].'</td>
+      <td>'.htmlspecialchars($val['name']).'</td>
+      <td><a href="view.php?idx='.$val['idx'].'">'.htmlspecialchars($val['subject']).'</a></td>
+      <td>'.htmlspecialchars(substr($val['regDate'],0,10)).'</td>
+      <td>'.htmlspecialchars($val['cnt']).'</td>
     </tr>
     ';
     }
