@@ -32,7 +32,7 @@
 
     <tr>
       <th>내용</th>
-      <td><?php echo htmlspecialchars(nl2br($val['memo']))?></td>
+      <td><?php echo nl2br(htmlspecialchars($val['memo']))?></td>
     </tr>
 
     <tr>
