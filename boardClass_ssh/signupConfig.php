@@ -95,8 +95,16 @@
     // 삽입sql
     public function insertData() {
       try {
-        $stm = $this->dbCnx->prepare("INSERT INTO memo(name, subject, memo,pwd, regDate, ip, cnt) values(?, ?, ?, ?, ?, ?,?)");
-        $stm->execute([$this->name, $this->subject, $this->memo, $this->pwd, $this->regDate, $this->ip, $this->cnt]);
+        $stm = $this->dbCnx->prepare("INSERT INTO memo(name, subject, memo, pwd, regDate, ip, cnt) values(:name, :subject, :memo, :pwd, :regDate, :ip, :cnt)");
+        $stm->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $stm->bindValue(':subject', $this->subject, PDO::PARAM_STR);
+        $stm->bindValue(':memo', $this->memo, PDO::PARAM_STR);
+        $stm->bindValue(':pwd', $this->pwd, PDO::PARAM_STR);
+        $stm->bindValue(':regDate', $this->regDate, PDO::PARAM_STR);
+        $stm->bindValue(':ip', $this->ip, PDO::PARAM_STR);
+        $stm->bindValue(':cnt', (int) $this->cnt, PDO::PARAM_INT);
+        $stm->execute();
+        // $stm->execute([$this->name, $this->subject, $this->memo, $this->pwd, $this->regDate, $this->ip, $this->cnt]);
         echo "<script>alert('게시물이 저장되었습니다.');document.location='index.php'</script>";
       } catch(Exception $e) {
         return $e->getMessage();
@@ -136,8 +144,10 @@
     // 인덱스 sql
     public function fetchOne() {
       try {
-        $stm= $this->dbCnx->prepare("SELECT * FROM memo WHERE idx=?");
-        $stm->execute([$this->idx]); 
+        $stm= $this->dbCnx->prepare("SELECT * FROM memo WHERE idx=:idx");
+        $stm->bindValue(':idx',(int) $this->idx, PDO::PARAM_INT);
+        $stm->execute();
+        //$stm->execute([$this->idx]); 
         return $stm->fetchAll();
       } catch(Exception $e) {
         return $e->getMessage();      
@@ -146,8 +156,16 @@
     // 수정 sql
     public function update() {
       try {
-        $stm = $this->dbCnx->prepare("UPDATE memo SET name = ?, subject = ?, memo = ?, regDate = ?, ip = ? WHERE idx = ?");
-        $stm->execute([$this->name, $this->subject, $this->memo, $this->regDate, $this->ip, $this->idx]);
+        // $stm = $this->dbCnx->prepare("UPDATE memo SET name =?, subject =?, memo =?, regDate =?, ip =? WHERE idx = ?");
+        // $stm->execute([$this->name, $this->subject, $this->memo, $this->regDate, $this->ip, $this->idx]);
+        $stm = $this->dbCnx->prepare("UPDATE memo SET name =:name, subject =:subject, memo =:memo, regDate =:regDate, ip =:ip WHERE idx = :idx");
+        $stm->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $stm->bindValue(':subject', $this->subject, PDO::PARAM_STR);
+        $stm->bindValue(':memo', $this->memo, PDO::PARAM_STR);
+        $stm->bindValue(':regDate', $this->regDate, PDO::PARAM_STR);
+        $stm->bindValue(':ip', $this->ip, PDO::PARAM_STR);
+        $stm->bindValue(':idx',(int) $this->idx, PDO::PARAM_INT);
+        $stm->execute();
         return $stm->fetchAll();
       } catch(Exception $e) {
         return $e->getMessage();
@@ -156,8 +174,11 @@
     // 삭제 sql
     public function delete() {
       try {
-        $stm = $this->dbCnx->prepare("DELETE FROM memo WHERE idx=?");
-        $stm->execute([$this->idx]);
+        //$stm = $this->dbCnx->prepare("DELETE FROM memo WHERE idx=?");
+        $stm = $this->dbCnx->prepare("DELETE FROM memo WHERE idx=:idx");
+        $stm->bindValue(':idx',(int) $this->idx, PDO::PARAM_INT);
+        $stm->execute();
+        //$stm->execute([$this->idx]);
         return $stm->fetchAll();
       } catch(Exception $e) {
         return $e->getMessage();
@@ -166,8 +187,11 @@
     // idx를 조건으로 비밀번호 확인 sql
     public function passwordConfirm() {
       try {
-        $stm = $this->dbCnx->prepare("SELECT pwd from memo where idx=?");
-        $stm->execute([$this->idx]);
+        // $stm = $this->dbCnx->prepare("SELECT pwd from memo where idx=?");
+        // $stm->execute([$this->idx]);
+        $stm = $this->dbCnx->prepare("SELECT pwd from memo where idx=:idx");
+        $stm->bindValue(':idx',(int) $this->idx, PDO::PARAM_INT);
+        $stm->execute();
         return $stm->fetchAll();
       } catch(Exception $e) {
         return $e->getMessage();
@@ -176,8 +200,12 @@
     // idx를 조건으로 조회수 sql
     public function cntCount() {
       try {
-        $stm = $this->dbCnx->prepare("UPDATE memo SET cnt = cnt+1 WHERE idx = ?");
-        $stm->execute([$this->idx]);
+        //$stm = $this->dbCnx->prepare("UPDATE memo SET cnt = cnt+1 WHERE idx = ?");
+        $stm = $this->dbCnx->prepare("UPDATE memo SET cnt = cnt+1 WHERE idx =:idx");
+        //$stm->bindValue(':cnt', (int) $this->cnt, PDO::PARAM_INT);
+        $stm->bindValue(':idx',(int) $this->idx, PDO::PARAM_INT);
+        $stm->execute();
+        //$stm->execute([$this->idx]);
         return $stm->fetchAll();
       } catch(Exception $e) {
         return $e->getMessage();
