@@ -16,7 +16,7 @@
     echo "<script>alert('게시물이 성공적으로 수정 되었습니다.');document.location='index.php';</script>";
   } else {
     echo "<script>alert('비밀번호가 틀립니다.');history.back(1);</script>";
-  }
+   }
 
 
 ?>
